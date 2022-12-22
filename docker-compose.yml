@@ -1,0 +1,37 @@
+version: "3.8"
+
+# The services of your app
+services:
+  # API service
+  server:
+    # Dockerfile
+    build: server/
+    # Restart policy
+    restart: on-failure
+    # Environment variables
+    env_file:
+      - .server.env
+    # Port mapping
+    ports:
+      - 3001:3001
+
+    # Volume for persistent data
+    volumes:
+      - server-data:/app/storage
+
+  # Website service
+  website:
+    # Dockerfile
+    build: website/
+    # Restart policy
+    restart: on-failure
+    # Port mapping
+    ports:
+      - 8080:3000
+    # Link to the API service
+    depends_on:
+      - server
+
+# Volumes
+volumes:
+  server-data:
