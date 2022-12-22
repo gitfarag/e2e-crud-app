@@ -16,7 +16,8 @@ it should be accessible from url “http://localhost:8080”
 ### Ports
 
 The application front end on port `8080`
-The application front end on port `3001`
+
+The application backend end on port `3001`
 
 ### Environment variables
 
